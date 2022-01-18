@@ -1,0 +1,176 @@
+<nav class="navbar nav-light bg-primary">
+  <div class="container-fluid">
+    <h1>
+      Restaurant Management App
+    </h1>
+    <div class="d-flex">
+      <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success" (click)="clickonaddrestaurent()">Add
+        Restaurent</button>&nbsp;
+        <button (click)="logout()" class="btn btn-danger">Logout</button>
+    </div>
+  </div>
+</nav>
+<div>
+  <!--we have add jumbotron-->
+<div class="p-5 mb-4 bg-light rounded-3">
+  <div class="container-fluid py-5">
+    <h2 class="display-5 fw-bold">Restaurant record app</h2>
+     
+    <h6 class="col-md-12 fs-5">You can save records of restaurant using Angular app</h6>
+
+
+
+  </div>
+
+</div>
+
+<!--jumbotron end here-->
+
+  <table class="table mt-10">
+    <thead>
+      <tr>
+        <th scope="col">Restaurent Id</th>
+        <th scope="col"> Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Mobile</th>
+        <th scope="col">Address</th>
+        <th scope="col">Service</th>
+        <th scope="col">Action</th>
+      </tr>
+
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>vojeer Ansari</td>
+        <td>vojeeransari@gmail.com</td>
+        <td>98484948</td>
+        <td>Sriganganagr,(Rajsathan)</td>
+        <td>Burger,coffe</td>
+        <td><button class="btn btn-success">Edit</button>&nbsp;<button  class="btn btn-danger">Delete</button></td>
+      </tr>
+      
+      <tr *ngFor="let item of restodata; let i= index">
+        <td>{{i+2}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.mobile}}</td>
+        <td>{{item.address}}</td>
+        <td>{{item?.service}}</td>
+        <td><button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info" (click)="onedit(item.userid,i)">Edit</button>&nbsp;
+          <button class="btn btn-danger" (click)="deleteresto(item.userid)">Delete</button></td>
+      </tr>
+    </tbody>
+
+  </table>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">add info</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formvalue">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Name</label>
+              <input type="text" formControlName="name" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp">
+
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Email </label>
+              <input type="text" formControlName="email" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Mobile</label>
+              <input type="text" formControlName="mobile" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Address</label>
+              <input type="text" formControlName="address" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Service</label>
+              <input type="text" formControlName="service" class="form-control" id="exampleInputPassword1">
+            </div>
+
+
+
+          </form>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" *ngIf="showadd"  (click)="addresto()" class="btn btn-primary">Add</button>
+          <button type="submit" *ngIf="showupdate"   (click)="update()" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- This is the example of  if else ...........
+<h1 *ngIf="value; then one else two">conditon check </h1>
+<ng-template #one>
+  <h1 >if condition </h1>
+</ng-template>
+<ng-template #two>
+  <h1> else condition</h1>
+</ng-template> -->
+
+<!-- this is example of  switch case
+
+
+<div [ngSwitch]="match">
+  <h1 *ngSwitchCase="'red'" style="color:red">red</h1>
+  <h1 *ngSwitchCase="'brown'" style="color:brown">red</h1>
+  <h1 *ngSwitchDefault="" style="color:red">unknown color</h1>
+</div> -->
+
+  <!--this the example of for loop in angular
+
+  <ul *ngFor="let data of arrays">
+
+    <li>{{data.name}}</li>
+    <li>{{data.age}}></li>
+    <li>{{data.phone}}</li>
+
+    <ol *ngFor="let v of data.socialaccount"> 
+    <li> social account: {{v}}</li>
+    </ol>
+  </ul>-->
+  <!-- this is the example of basic form in angular
+  <form #basicform="ngForm" (ngSubmit)="getvalue(basicform.value)">
+    <input type="text" ngModel name="name" placeholder="enter name">
+    <input type="email" ngModel name="email" placeholder="enter email">
+    <input type="password" ngModel name="password" placeholder="enter password">
+    <button class="btn btn-success" > Submit</button>
+  </form>
+  <ul>
+    <li>{{mode.name}}</li>
+    <li>{{mode.email}}</li>
+    <li>{{mode.password}}</li>
+  </ul>
+  
+   THIS IS THE EXAMPLE OF TODI LIST APP ADD LIST AND REMOVE LIST
+  <div>
+  <input type=" text" id="task" placeholder="enter new task" #id>
+  
+  <span> <button id="btn" (click)="addtask(id.value)">add tasl</button></span>
+  </div>
+  <ul *ngFor="let item of list">
+    <li>{{item.name}}</li><button (click)="removetask(item.id)">remove </button>
+  </ul>--
+
+   THIS IS THE EXAMPLE OF PAARENT TO CHILD DATA TRASFER ....
+
+  <ul>
+  <li>{{data.name}}</li>
+  <li>{{data.age}}}</li>
+  <li>{{data.email}}</li>
+  </ul>-->
+  

@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <ng-content select=".card-title"></ng-content>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <ng-content select=".btn"></ng-content>
+            </div>
+          </div>
+    </div>
+</div>
+<h4>{{heading}}</h4>
+<input type="text" placeholder="{{heading}}" #box>
